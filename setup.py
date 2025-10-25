@@ -16,7 +16,7 @@ setuptools.setup(
     version=version,
     author='Ram Rachum',
     author_email='ram@rachum.com',
-    description='A Windows virtual desktop switcher with keyboard shortcuts',
+    description='Dodo: Desktop Switcher for Windows',
     long_description=read_file('README.md'),
     long_description_content_type='text/markdown',
     url='https://github.com/cool-RR/dodo',
