@@ -17,11 +17,19 @@ If you're trying to organize your work across multiple virtual desktops, these l
 
 Dodo provides intuitive keyboard shortcuts that make virtual desktops actually usable:
 
+### Basic Shortcuts
 - **Alt+1 through Alt+9** - Jump directly to desktops 1-9
 - **Alt+0** - Jump to desktop 10
 - **Alt+-** - Return to your previous desktop (like Alt+Tab but for desktops)
 - **Alt+Shift+1 through Alt+Shift+0** - Move the active window to a specific desktop
 - **Alt+Shift+`** - Pin/unpin the active window to all desktops
+
+### Advanced Features
+- **Ctrl+Alt+-** - Generate a snapshot of your current window layout (Toxita feature)
+- **Ctrl+Alt+Shift+-** - Show desktop number overlay on demand
+- **Desktop Names** - Customize desktop names shown in overlays
+- **Auto-Pinning** - Automatically pin windows based on title patterns
+- **Desktop Monitoring** - Automatically show overlay when desktops change
 
 Dodo automatically ensures you have 10 virtual desktops available and shows a brief on-screen indicator when you switch desktops.
 
@@ -83,6 +91,46 @@ Dodo doesn't create or manage virtual desktops itself - Windows does all the hea
 3. Provides a system tray interface using `wxPython`
 
 This means Dodo is lightweight, reliable, and works seamlessly with Windows' native virtual desktop features.
+
+## Advanced Features
+
+### Toxita: Window Layout Management
+
+Dodo includes a powerful feature called "Toxita" that lets you save and restore window layouts across desktops:
+
+1. **Generate a snapshot**: Press `Ctrl+Alt+-` to create `~/.dodo/toxita.yaml` with all your current windows organized by desktop
+2. **Edit the layout**: The YAML file will open automatically - move window entries between desktops by editing the file
+3. **Auto-apply changes**: Dodo watches the file - when you save it, windows are automatically moved to match your layout
+
+This is perfect for:
+- Quickly reorganizing your workspace
+- Creating repeatable window layouts
+- Moving many windows between desktops at once
+
+### Desktop Names
+
+Customize the names shown in desktop overlays by creating `~/.dodo/names.yaml`:
+
+```yaml
+desktop_1: Code
+desktop_2: Browser
+desktop_3: Communication
+desktop_10: Music
+```
+
+Desktop names appear in the overlay when switching desktops, making it easier to remember what's on each desktop.
+
+### Auto-Pinning
+
+Automatically pin windows to all desktops based on their titles. Create `~/.dodo/always_pinned` with regex patterns (one per line):
+
+```
+.*Spotify.*
+.*Discord.*
+Task Manager
+```
+
+Any window whose title matches these patterns will be automatically pinned to all desktops. If you manually unpin a window using `Alt+Shift+\``, Dodo will respect that choice and won't re-pin it.
 
 ## Uninstallation
 
